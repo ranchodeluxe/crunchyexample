@@ -9,5 +9,5 @@
 1. Install this chart
 
     ```python
-    helm install example pgo-on-nfs
+    $ helm install example pgo-on-nfs
     ```
