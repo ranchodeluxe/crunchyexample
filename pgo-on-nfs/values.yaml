@@ -1,0 +1,22 @@
+postgresclusterNFSStaticPV:
+  enabled: true
+  storageClassName: efs-sc
+  volumeHandle: "<your-volume-handle-here>"
+
+postgrescluster:
+  enabled: true
+  postgresVersion: 16
+  postGISVersion: 3.4
+  pgBouncerReplicas: 1
+  monitoring: false
+  instances:
+  - name: example
+    replicas: 1
+    dataVolumeClaimSpec:
+      storageClassName: efs-sc
+      volumeName: efs-pv
+      accessModes:
+      - "ReadWriteMany"
+      resources:
+        requests:
+          storage: 300Mi
